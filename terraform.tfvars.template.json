@@ -19,7 +19,7 @@
   "mongosync_config": {
     "source_conn_string": "${source-mongodb-uri}",
     "target_conn_string": "${target-mongodb-uri}",
-    "os-id": "${mongosync-os-id}",
+    "os_id": "${mongosync-os-id}",
     "version": "${mongosync-version}",
     "features": "supportOlderVersions,acceptRemoteAPIRequest"
   },

@@ -22,7 +22,7 @@
   "mongosync_config": {
     "source_conn_string": "mongodb://user:password@node1:27017,node2:27017,...",
     "target_conn_string": "mongodb+srv://user:pass@dst.ab1cd.mongodb.net",
-    "os-id": "ubuntu2004",
+    "os_id": "ubuntu2004",
     "version": "1.7.1",
     "features": "supportOlderVersions,acceptRemoteAPIRequest"
   },

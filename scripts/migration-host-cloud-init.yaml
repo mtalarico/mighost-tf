@@ -19,6 +19,6 @@ write_files:
 runcmd:
   - wget https://fastdl.mongodb.org/tools/mongosync/mongosync-amazon2-x86_64-${mongosync_version}.tgz -O /migration/mongosync-amazon2-x86_64-${mongosync_version}.tgz
   - tar xzvf /migration/mongosync-amazon2-x86_64-${mongosync_version}.tgz -C /migration
-  - ln -s /migration/mongosync-amazon2-x86_64-${mongosync_version}/bin/mongosync /usr/bin/mongosync
+  - ln -s /migration/mongosync-${os_id}-x86_64-${mongosync_version}/bin/mongosync /usr/bin/mongosync
   - systemctl enable mongosync.service
   - systemctl start mongosync.service

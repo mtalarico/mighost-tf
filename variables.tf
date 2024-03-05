@@ -21,6 +21,7 @@ variable "mongosync_config" {
   type = object({
     source_conn_string = string
     target_conn_string = string
+    os_id              = string
     version            = string
     features           = string
   })
