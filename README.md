@@ -8,6 +8,7 @@ An example terraform module that automatically provision one or more migration h
 <hr>
 
 # TODO:
+- [ ] improve UX (right now this module provisions a Private Endpoint that is required to get the PE string of the cluster on the source/dest... chicken and egg situation)
 - [ ] expand this documentation
 - [ ] make the os_id an enum
 
