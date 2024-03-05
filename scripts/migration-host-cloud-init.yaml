@@ -1,0 +1,24 @@
+write_files:
+  - path: /migration/start-mongosync.sh
+    permissions: 755
+    content: |
+      #!/bin/sh
+      mongosync --cluster0 ${source_conn_string} --cluster1 ${target_conn_string} --logPath /migration %{ if shard_id != "" }--id ${shard_id}%{ endif } %{ if features != "" } --enableFeatures ${features}%{ endif }
+  - path: /etc/systemd/system/mongosync.service
+    content: |
+      [Unit]
+      Description=Service that runs mongosync at startup
+      After=network.target
+
+      [Install]
+      WantedBy=multi-user.target
+
+      [Service]
+      ExecStart=/migration/start-mongosync.sh
+      Restart=always
+runcmd:
+  - wget https://fastdl.mongodb.org/tools/mongosync/mongosync-amazon2-x86_64-${mongosync_version}.tgz -O /migration/mongosync-amazon2-x86_64-${mongosync_version}.tgz
+  - tar xzvf /migration/mongosync-amazon2-x86_64-${mongosync_version}.tgz -C /migration
+  - ln -s /migration/mongosync-amazon2-x86_64-${mongosync_version}/bin/mongosync /usr/bin/mongosync
+  - systemctl enable mongosync.service
+  - systemctl start mongosync.service
