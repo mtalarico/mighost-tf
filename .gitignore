@@ -1,6 +1,6 @@
 .terraform*
 terraform.tfstate*
 terraform.tfvars.json
-extra/mongosync_api/__pycache__
+__pycache__
 ips.json
 .venv

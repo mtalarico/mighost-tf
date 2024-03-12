@@ -1,0 +1,29 @@
+{
+  "local_ips": [
+    "my-laptop-ip/32"
+  ],
+  "aws": {
+    "sg_name": "some-security-group",
+    "subnet_id": "some-subnet",
+    "key_name": "some-key-pair",
+    "region": "us-east-1",
+    "instance_type": "c4.8xlarge",
+    "tags": {
+      "owner": "john.doe",
+      "expire": "2024-03-10",
+      "description": "Terraform managed migration host"
+    }
+  },
+  "mongosync_config": {
+    "source_conn_string": "mongodb://user:password@node1:27017,node2:27017,...",
+    "target_conn_string": "mongodb+srv://user:pass@dst.ab1cd.mongodb.net",
+    "os_id": "ubuntu2004",
+    "version": "1.7.1",
+    "features": "supportOlderVersions,acceptRemoteAPIRequest",
+    "options": "--retryTime 10800"
+  },
+  "source_shard_ids": [
+    "atlas-ab1cd-shard-0",
+    "atlas-ab1cd-shard-1"
+  ]
+}

@@ -5,9 +5,7 @@
   "aws": {
     "sg_name": "some-security-group",
     "subnet_id": "some-subnet",
-    "key_name": "some-key-pair",
     "region": "us-east-1",
-    "instance_type": "C3.2xlarge",
     "tags": {
       "owner": "john.doe",
       "expire": "2024-03-10",
@@ -24,7 +22,8 @@
     "target_conn_string": "mongodb+srv://user:pass@dst.ab1cd.mongodb.net",
     "os_id": "ubuntu2004",
     "version": "1.7.1",
-    "features": "supportOlderVersions,acceptRemoteAPIRequest"
+    "features": "supportOlderVersions,acceptRemoteAPIRequest",
+    "options": "--retryTime 10800"
   },
   "source_shard_ids": [
     "atlas-ab1cd-shard-0",

@@ -1,0 +1,23 @@
+{
+  "local_ips": ["${laptop-ip}/32"],
+  "aws": {
+    "sg_name": "${security-group}",
+    "subnet_id": "${subnet}",
+    "key_name": "${key-pair}",
+    "region": "${aws-region}",
+    "instance_type": "c4.8xlarge",
+    "tags": {
+      "owner": "${owner}",
+      "description": "Terraform managed migration host"
+    }
+  },
+  "mongosync_config": {
+    "source_conn_string": "${source-mongodb-uri}",
+    "target_conn_string": "${target-mongodb-uri}",
+    "os_id": "${mongosync-os-id}",
+    "version": "${mongosync-version}",
+    "features": "supportOlderVersions,acceptRemoteAPIRequest",
+    "options": "${mongosync-options}"
+  },
+  "source_shard_ids": ["shard0", "shardN"]
+}

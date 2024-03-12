@@ -47,7 +47,8 @@ class MongosyncAPI:
             if self.verbose:
                 print(f"POST to {url} with payload {json.dumps(payload)}")
             resp = http.request(method="POST", url=url, fields=payload)
-            print(resp)
+            print(resp.data.decode("utf-8"))
+            print()
 
     def _get(self, endpoint, headers):
         for i, host in enumerate(self.hosts):
@@ -56,7 +57,8 @@ class MongosyncAPI:
             if self.verbose:
                 print(f"GET to {url} with headers {json.dumps(headers)}")
             resp = http.request(method="GET", url=url, headers=headers)
-            print(resp)
+            print(resp.data.decode("utf-8"))
+            print()
 
 
 @click.group()

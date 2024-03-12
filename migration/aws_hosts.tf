@@ -22,7 +22,7 @@ data "cloudinit_config" "mongosync" {
     filename     = "migration-host-cloud-init.yaml"
     content_type = "text/cloud-config"
 
-    content = templatefile("./scripts/migration-host-cloud-init.yaml", { os_id = var.mongosync_config.os_id, source_conn_string = var.mongosync_config.source_conn_string, target_conn_string = var.mongosync_config.target_conn_string, mongosync_version = var.mongosync_config.version, shard_id = each.key, features = var.mongosync_config.features })
+    content = templatefile("./scripts/migration-host-cloud-init.yaml", { os_id = var.mongosync_config.os_id, source_conn_string = var.mongosync_config.source_conn_string, target_conn_string = var.mongosync_config.target_conn_string, mongosync_version = var.mongosync_config.version, shard_id = each.key, features = var.mongosync_config.features, options = var.mongosync_config.options })
   }
 }
 

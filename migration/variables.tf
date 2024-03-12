@@ -24,6 +24,7 @@ variable "mongosync_config" {
     os_id              = string
     version            = string
     features           = string
+    options            = string
   })
 }
 
@@ -31,12 +32,4 @@ variable "source_shard_ids" {
   type        = set(string)
   description = "source shards to launch a mongosync process against, name **must** be id (sh.status() or config.shards)"
   default     = [""] # will only launch 1 mongosync with no --id if no shard map is provided
-}
-
-variable "atlas" {
-  type = object({
-    public_key  = string
-    private_key = string
-    project_id  = string
-  })
 }

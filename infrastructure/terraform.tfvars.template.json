@@ -3,9 +3,7 @@
   "aws": {
     "sg_name": "${security-group}",
     "subnet_id": "${subnet}",
-    "key_name": "${key-pair}",
     "region": "${aws-region}",
-    "instance_type": "C3.2xlarge",
     "tags": {
       "owner": "${owner}",
       "description": "Terraform managed migration host"
@@ -15,13 +13,5 @@
     "public_key": "${atlas-public-key}",
     "private_key": "${atlas-private-key}",
     "project_id": "${atlas-project-id}"
-  },
-  "mongosync_config": {
-    "source_conn_string": "${source-mongodb-uri}",
-    "target_conn_string": "${target-mongodb-uri}",
-    "os_id": "${mongosync-os-id}",
-    "version": "${mongosync-version}",
-    "features": "supportOlderVersions,acceptRemoteAPIRequest"
-  },
-  "source_shard_ids": ["shard0", "shardN"]
+  }
 }

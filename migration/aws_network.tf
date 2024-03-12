@@ -1,11 +1,4 @@
-resource "aws_vpc_endpoint" "atlas_interface" {
-  vpc_id             = data.aws_vpc.selected.id
-  service_name       = mongodbatlas_privatelink_endpoint.aws_app.endpoint_service_name
-  vpc_endpoint_type  = "Interface"
-  subnet_ids         = [data.aws_subnet.selected.id]
-  security_group_ids = [data.aws_security_group.selected.id]
-  tags               = var.aws.tags
-}
+
 
 data "aws_vpc" "selected" {
   id = data.aws_security_group.selected.vpc_id
