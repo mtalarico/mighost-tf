@@ -19,48 +19,44 @@ class MongosyncAPI:
             exit(1)
 
     def start(self):
-        for i, host in enumerate(self.hosts):
-            payload = {"source": "cluster0", "destination": "cluster1"}
-            if self.support_older_versions:
-                payload["supportOlderVersions"] = True
-            url = f"http://{host}:{self.port}/api/v1/start"
-            print(f"Sending /start to host {i} ({host}:{self.port})")
-            if self.verbose:
-                print(f"POST to {url} with payload {json.dumps(payload)}")
-            # resp = http.request(method="POST", url=url, fields=payload)
-            # print(resp.data)
+        payload = {"source": "cluster0", "destination": "cluster1"}
+        if self.support_older_versions:
+            payload["supportOlderVersions"] = True
+        self._post("start", payload)
 
     def progress(self):
-        for i, host in enumerate(self.hosts):
-            headers = {"Content-Type": "application/json"}
-            url = f"http://{host}:{self.port}/api/v1/progress"
-            print(f"Sending /progress to host {i} ({host}:{self.port})")
-            if self.verbose:
-                print(f"GET to {url} with headers {json.dumps(headers)}")
-            # resp = http.request(method="GET", url=url, headers=headers)
-            # print(resp.data)
+        headers = {"Content-Type": "application/json"}
+        self._get("progress", headers)
 
     def commit(self):
-        self._post_empty("commit")
+        self._post("commit", {})
 
     def pause(self):
-        self._post_empty("pause")
+        self._post("pause", {})
 
     def resume(self):
-        self._post_empty("resume")
+        self._post("resume", {})
 
     def reverse(self):
-        self._post_empty("reverse")
+        self._post("reverse", {})
 
-    def _post_empty(self, endpoint):
+    def _post(self, endpoint, payload):
         for i, host in enumerate(self.hosts):
-            payload = {}
             url = f"http://{host}:{self.port}/api/v1/{endpoint}"
             print(f"Sending /{endpoint} to host {i} ({host}:{self.port})")
             if self.verbose:
                 print(f"POST to {url} with payload {json.dumps(payload)}")
-            # resp = http.request(method="POST", url=url, fields=payload)
-            # print(resp.data)
+            resp = http.request(method="POST", url=url, fields=payload)
+            print(resp)
+
+    def _get(self, endpoint, headers):
+        for i, host in enumerate(self.hosts):
+            url = f"http://{host}:{self.port}/api/v1/{endpoint}"
+            print(f"Sending /{endpoint} to host {i} ({host}:{self.port})")
+            if self.verbose:
+                print(f"GET to {url} with headers {json.dumps(headers)}")
+            resp = http.request(method="GET", url=url, headers=headers)
+            print(resp)
 
 
 @click.group()
