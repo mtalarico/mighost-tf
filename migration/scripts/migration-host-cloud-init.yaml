@@ -3,7 +3,7 @@ write_files:
     permissions: 755
     content: |
       #!/bin/sh
-      mongosync --cluster0 ${source_conn_string} --cluster1 ${target_conn_string} --logPath /migration %{ if shard_id != "" }--id ${shard_id}%{ endif } %{ if features != "" } --enableFeatures ${features}%{ endif }  %{ if options != "" }${options}%{ endif }
+      mongosync %{ if options != "" }${options}%{ endif } --cluster0 "${source_conn_string}" --cluster1 "${target_conn_string}" --logPath "/migration" %{ if shard_id != "" }--id "${shard_id}"%{ endif } %{ if features != "" } --enableFeatures "${features}"%{ endif }
   - path: /etc/systemd/system/mongosync.service
     content: |
       [Unit]

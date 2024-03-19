@@ -20,7 +20,7 @@
     "os_id": "ubuntu2004",
     "version": "1.7.1",
     "features": "supportOlderVersions,acceptRemoteAPIRequest",
-    "options": "--retryTime 10800"
+    "options": "--retryTime 10800 --partitionSizeInBytes 1073741824 --maxNumDocsToSamplePerPartition 5 --enableExtraCollectionCopyProgressFields"
   },
   "source_shard_ids": [
     "atlas-ab1cd-shard-0",
